@@ -31,3 +31,6 @@ In the early 2010's there were a series of community organized movements to crea
 
 - There is existing framework to build an online forum so one would not have to rely solely on social media to communicate. One such tool is Formik, a react API for designing custom forums. (https://formik.org/)
 - It would be nice to implement some type of "badge" system that awards users that extend help to newer users, or tracks the amount of time one has spent brewing to let newer users know that someone is a community leader they could ask for help.
+
+**Here is a Layout of the DOM**
+![DomDiagram](dom-diagram.png)

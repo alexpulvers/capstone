@@ -11,11 +11,10 @@ function EditItemForm(props) {
     props.onEditItem();
     const propertiesToUpdate = {
       name: event.target.name.value,
-      availability: event.target.availability.value,
       description: event.target.description.value,
     };
     return firestore.update(
-      { collection: "item", doc: item.id },
+      { collection: "items", doc: item.id },
       propertiesToUpdate
     );
   }

@@ -19,7 +19,8 @@ function EquipmentList(props) {
               whenItemClicked={props.onItemSelection}
               name={item.name}
               description={item.description}
-              availability={item.availability}
+              id={item.id}
+              key={item.id}
             />
           );
         })}

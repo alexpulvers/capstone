@@ -12,7 +12,6 @@ import { Provider } from "react-redux";
 import rootReducer from "./reducers/index";
 
 const store = createStore(rootReducer);
-
 const rrfProps = {
   firebase,
   config: {

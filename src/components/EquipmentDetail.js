@@ -7,7 +7,7 @@ function EquipmentDetail(props) {
   return (
     <React.Fragment>
       <h1>{item.name}</h1>
-      <br>insert img here</br>
+      <p>insert img here</p>
       <p>{item.description}</p>
       <button onClick={props.onClickingEdit}>Update item</button>
       <button onClick={() => onClickingDelete(item.id)}>Delete item</button>

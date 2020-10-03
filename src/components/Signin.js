@@ -7,36 +7,41 @@ function Signin() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(function () {
-        console.log("success");
-      })
-      .catch(function (error) {
-        console.log(error.message);
-      });
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(function () {
+      alert("success");
+    }).then(window.location.href = './SiteControl')
+    .catch(function (error) {
+      console.log(error.message);
+    });
   }
   function doSignIn(event) {
     event.preventDefault();
     const email = event.target.signinEmail.value;
     const password = event.target.signinPassword.value;
     firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(function () {
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(function () {
         console.log("Successfully logged in");
       })
       .catch(function (error) {
         console.log(error.message);
       });
   }
+  function doSignInGoogle(event){
+    event.preventDefault();
+    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(googleAuthProvider)
+
+  }
   function doSignOut() {
     firebase
       .auth()
       .signOut()
-      .then(function () {
-        console.log("Successfully Signed out");
-      })
+      .then(window.location.href = "./Homepage"
+      )
       .catch(function (error) {
         console.log(error.message);
       });
@@ -64,6 +69,20 @@ function Signin() {
         <br />
         <button type="submit">Sign in</button>
       </form>
+      <br/>
+      <form onSubmit={doSignInGoogle}>
+      <div>
+      <p>Or, Sign in with Google</p>
+      <button
+        onClick={() => {
+          const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+          firebase.auth().signInWithPopup(googleAuthProvider);
+        }}
+      >
+        Sign in with Google
+      </button>
+    </div>
+      </form>
       <br />
       <b>
         <u>Sign Out</u>
@@ -74,5 +93,33 @@ function Signin() {
     </React.Fragment>
   );
 }
+
+const IfUnAuthed = () => {
+
+  return (
+    <div>
+      <h2>You're not signed in </h2>
+      <button
+        onClick={() => {
+          firebase
+            .app()
+            .auth()
+            .signInAnonymously();
+        }}
+      >
+        Sign in anonymously
+      </button>
+      <button
+        onClick={() => {
+          const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+          firebase.auth().signInWithPopup(googleAuthProvider);
+        }}
+      >
+        Sign in with Google
+      </button>
+    </div>
+  );
+};
+
 
 export default Signin;

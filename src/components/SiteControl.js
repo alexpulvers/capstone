@@ -1,11 +1,15 @@
 import React from "react";
-import * as a from "./../actions";
+import * as a from "../actions";
 import { withFirestore, isLoaded } from "react-redux-firebase";
 import { connect } from "react-redux";
 import EquipmentList from "./EquipmentList";
 import EquipmentDetail from "./EquipmentDetail";
 import NewItemForm from "./AddEquipment";
 import EditItemForm from "./EditEquipmentForm";
+import calendarConfig from "../reducers/calendar-reducer";
+import Homepage from "./Homepage";
+
+
 
 class SiteControl extends React.Component {
   constructor(props) {
@@ -39,7 +43,7 @@ class SiteControl extends React.Component {
       const firestoreItem = {
         name: item.get("name"),
         description: item.get("description"),
-        availability: item.get("availability"),
+        id: item.id,
       };
       this.setState({ selectedItem: firestoreItem });
     });
@@ -62,6 +66,7 @@ class SiteControl extends React.Component {
   };
 
   render() {
+
     let currentlyVisibleState = null;
     let buttonText = null;
     const auth = this.props.firebase.auth();
@@ -75,7 +80,7 @@ class SiteControl extends React.Component {
     if (isLoaded(auth) && auth.currentUser == null) {
       return (
         <React.Fragment>
-          <h3>You must be signed in to access the snakes.</h3>
+          <h3>You must be signed in to access the Equipment page.</h3>
         </React.Fragment>
       );
     }
@@ -104,14 +109,17 @@ class SiteControl extends React.Component {
         buttonText = "Return to Equipment List";
       } else {
         currentlyVisibleState = (
+          
           <EquipmentList onItemSelection={this.handleChangingSelectedItem} />
+        
         );
-        buttonText = "Add buffalo";
+        buttonText = "Add Equipment to list!";
       }
       return (
         <React.Fragment>
           {currentlyVisibleState}
           <button onClick={this.handleClick}>{buttonText}</button>
+          <Homepage Homepage />
         </React.Fragment>
       );
     }

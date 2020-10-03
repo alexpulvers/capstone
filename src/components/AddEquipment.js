@@ -7,11 +7,12 @@ function NewItemForm(props) {
   const firestore = useFirestore();
   function addItemToFirestore(event) {
     event.preventDefault();
+
     props.onNewItemCreation();
+
     return firestore.collection("items").add({
       name: event.target.name.value,
       description: event.target.description.value,
-      availability: event.target.availability.value,
     });
   }
 

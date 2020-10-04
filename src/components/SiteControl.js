@@ -6,8 +6,7 @@ import EquipmentList from "./EquipmentList";
 import EquipmentDetail from "./EquipmentDetail";
 import NewItemForm from "./AddEquipment";
 import EditItemForm from "./EditEquipmentForm";
-import calendarConfig from "../reducers/calendar-reducer";
-import Homepage from "./Homepage";
+import middlewareLogger from "../middleware/middleware-logger"
 
 
 
@@ -70,21 +69,22 @@ class SiteControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     const auth = this.props.firebase.auth();
-    if (!isLoaded(auth)) {
-      return (
-        <React.Fragment>
-          <h1>Loading...</h1>
-        </React.Fragment>
-      );
-    }
-    if (isLoaded(auth) && auth.currentUser == null) {
-      return (
-        <React.Fragment>
-          <h3>You must be signed in to access the Equipment page.</h3>
-        </React.Fragment>
-      );
-    }
-    if (isLoaded(auth) && auth.currentUser != null) {
+    // if (!isLoaded(auth)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>Loading...</h1>
+    //     </React.Fragment>
+    //   );
+    // }
+    // if (isLoaded(auth) && auth.currentUser == null) {
+
+    //   return (
+    //     <React.Fragment>
+    //       <h3>You must be signed in to access the Equipment page.</h3>
+    //     </React.Fragment>
+    //   );
+    // }
+    // if (isLoaded(auth) && auth.currentUser != null) {
       if (this.state.editing) {
         currentlyVisibleState = (
           <EditItemForm
@@ -119,12 +119,11 @@ class SiteControl extends React.Component {
         <React.Fragment>
           {currentlyVisibleState}
           <button onClick={this.handleClick}>{buttonText}</button>
-          <Homepage Homepage />
         </React.Fragment>
       );
     }
   }
-}
+//}
 
 const mapStateToProps = (state) => {
   return {

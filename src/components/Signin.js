@@ -76,7 +76,7 @@ function Signin() {
       <button
         onClick={() => {
           const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-          firebase.auth().signInWithPopup(googleAuthProvider);
+          firebase.auth().signInWithPopup(googleAuthProvider).then(window.location.href = './SiteControl');
         }}
       >
         Sign in with Google

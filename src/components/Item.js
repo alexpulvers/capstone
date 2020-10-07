@@ -6,8 +6,8 @@ function Item(props) {
     <React.Fragment>
       <div onClick={() => props.whenItemClicked(props.id)}>
         <h3>{props.name}</h3>
+        {props.firebaseUrl}
         <hr />
-        img here
         <p>{props.description}</p>
       </div>
       <hr />

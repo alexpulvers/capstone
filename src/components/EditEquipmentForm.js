@@ -12,6 +12,7 @@ function EditItemForm(props) {
     const propertiesToUpdate = {
       name: event.target.name.value,
       description: event.target.description.value,
+      image: event.target.image.value,
     };
     return firestore.update(
       { collection: "items", doc: item.id },

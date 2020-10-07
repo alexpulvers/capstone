@@ -6,7 +6,7 @@ import EquipmentList from "./EquipmentList";
 import EquipmentDetail from "./EquipmentDetail";
 import NewItemForm from "./AddEquipment";
 import EditItemForm from "./EditEquipmentForm";
-import middlewareLogger from "../middleware/middleware-logger"
+
 
 
 
@@ -36,6 +36,7 @@ class SiteControl extends React.Component {
     const action = a.toggleForm();
     dispatch(action);
   };
+
 
   handleChangingSelectedItem = (id) => {
     this.props.firestore.get({ collection: "items", doc: id }).then((item) => {

@@ -48,6 +48,7 @@ function Signin() {
   }
   return (
     <React.Fragment>
+      <div className="signin">
       <b>
         <u>Sign up</u>
       </b>
@@ -90,6 +91,7 @@ function Signin() {
       <br />
       <button onClick={doSignOut}>Sign out</button>
       <hr />
+      </div>
     </React.Fragment>
   );
 }

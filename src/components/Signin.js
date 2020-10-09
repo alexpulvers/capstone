@@ -33,7 +33,7 @@ function Signin() {
   function doSignInGoogle(event){
     event.preventDefault();
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(googleAuthProvider)
+    setTimeout(function(){firebase.auth().signInWithPopup(googleAuthProvider)}, 2000).then(window.location.href="./Homepage")
 
   }
   function doSignOut() {

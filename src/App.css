@@ -16,6 +16,15 @@
   position: relative;
 }
 
+.homepage {
+  width: 75%;
+  border:2px white solid;
+  margin-left: 12%;
+  margin-top: 10px;
+  margin-bottom:20px;
+  color: lightyellow;
+}
+
 .footer {
   min-height: 80px;
   background-color: #282422;

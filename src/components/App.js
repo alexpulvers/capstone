@@ -10,6 +10,8 @@ import Calendar from "./Calendar";
 import '../App.css';
 import Footer from "./Footer";
 
+
+
 function App() {
   return (
    
@@ -18,7 +20,7 @@ function App() {
          <Switch>
        <Route path = "/Homepage">
          <Homepage />
-         <Footer />
+         
        </Route>
        <Route path = "/Signin">
          <Signin/>
